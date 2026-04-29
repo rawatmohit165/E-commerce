@@ -9,7 +9,7 @@ const CartPage = ({ cartProps }: HomeProps) => {
     cartProps.decrement(id);
   };
   return (
-    <div className="flex flex-col gap-3 rounded-2xl border p-4">
+    <div className="flex flex-col gap-3 rounded-2xl border p-4 lg:max-w-7xl lg:mx-auto">
       {/* Header */}
       <div>
         <h2 className="text-xl font-semibold">

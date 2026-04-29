@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import Navbar from "./components/Navbar";
 import "./index.css";
 import HomePage   from "./pages/HomePage.tsx"
@@ -7,8 +7,13 @@ import type { CartItem, CartProps, Page, Product } from "./types";
 
 export default function App() {
   const [page, setPage] = useState<Page>("home");
-  const [cart, setCart] = useState<CartItem[]>([]);
-
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    const stored = localStorage.getItem("cart");
+    return stored ? JSON.parse(stored) : [];
+  });
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
   const addToCart = (product: Product) => {
     setCart((prev: CartItem[]) => {
       const existing = prev.find((i) => i.id === product.id);

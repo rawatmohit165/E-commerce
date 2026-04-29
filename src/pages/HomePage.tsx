@@ -60,7 +60,6 @@ const HomePage = (props: HomeProps) => {
       list.sort((a, b) => b.discountPercentage - a.discountPercentage);
     return list;
   }, [product, search, cats, sortby]);
-  console.log(filterdata);
 
   const options: optionType[] = [
     { lable: "Default", value: "default" },
@@ -95,7 +94,7 @@ const HomePage = (props: HomeProps) => {
 
           )}
         </div>
-        <div className=" border rounded-lg bg-white py-1 flex flex-full focus-within:border focus-within:border-blue-500 items-center ">
+        <div className=" border relative rounded-lg bg-white py-1 flex flex-full focus-within:border focus-within:border-blue-500 items-center ">
           <select
             value={sortby}
             onChange={(e) => setSortby(e.target.value)}
